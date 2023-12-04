@@ -1,24 +1,13 @@
-/* GENERAL STYLES SETTING */
-@font-face {
-    font-family: Montserrat;
-    src: url('../fonts/Montserrat-VariableFont_wght.ttf');
-}
-
-@font-face {
-    font-family: 'Jet Brains Mono';
-    src: url('../fonts/JetBrainsMono[wght].ttf');
-}
-
-*:not(ul, li) {
+* {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
 :root {
-    --scrollbar-color: rgba(255, 255, 255, 0.062);
-    --doc-bg-color: #232323;
-    --doc-text-color: #e5e5e5;
-    --code-in-doc-bg: #393939;
+    --bg-color: #101010;
+    --doc-text-color: #f0f0f0;
+    --code-in-doc-bg: #101010;
     --editor-conf-bg: rgb(43, 43, 43);
     --editor-conf-txt: white;
     --editor-conf-opt: rgb(31, 31, 31);
@@ -37,16 +26,16 @@
     --div-output-color: #3f4350;
 }
 
-/* PAGE STYLE */
 body {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--bg-color);
 }
 
-body>div.top,
-body>div.bottom {
+.bottom {
+    bottom: 0;
     display: flex;
-    max-height: 50vh;
 }
 
 div.please {
@@ -67,38 +56,27 @@ div.bottom div.stack,
 div.bottom div.output {
     display: flex;
     flex-direction: column;
-    --side-padding: 40px;
-    --top-padding: 15px;
-    padding: var(--top-padding) var(--side-padding);
-    width: calc(50vw - (var(--side-padding)*2));
-    height: calc(50vh - (var(--top-padding)*2));
     overflow-y: scroll;
-    font-family: 'Montserrat';
     cursor: default;
+    padding: 20px;
 }
 
 div.stack {
-    background-color: var(--div-stack-color);
-    color: var(--doc-text-color);
-    justify-content: center;
-    align-items: center;
+    background-color: #000000;
+    color: #f0f0f0;
+    width: 200px;
+    height: auto;    
 }
 
 div.stack h1 {
     color: #787878;
-    font-size: 21px;
-    font-weight: 400;
-    margin-bottom: 9px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 div.stack ul {
-    border: 2px solid var(--scrollbar-color);
     border-radius: 6px;
-    min-width: 70%;
-    max-width: 70.1%;
     text-align: center;
-    padding: 0;
-    margin: 0;
     list-style: none;
     width: fit-content;
     padding: 10px 8px;
@@ -110,11 +88,12 @@ div.output ul li strong {
 }
 
 div.stack ul li {
-    border: 1px solid #404040;
     background-color: #383838;
-    border-radius: 4px;
-    padding: 5px;
-    margin-bottom: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 div.stack ul li.active {
@@ -129,6 +108,7 @@ div.stack ul li.error {
 
 div.output {
     text-align: center;
+    width: 500px;
     background-color: var(--div-output-color);
     color: var(--doc-text-color);
 }
@@ -183,7 +163,6 @@ div.info {
     max-height: calc(100vh - (var(--top-padding)*2));
     overflow-y: scroll;
     font-family: 'Montserrat';
-    background-color: var(--doc-bg-color);
     color: var(--doc-text-color);
     cursor: default;
 }
@@ -210,7 +189,6 @@ div.info>p {
 
 *::-webkit-scrollbar-thumb {
     border-radius: 100px;
-    background-color: var(--scrollbar-color);
 }
 
 code {
@@ -232,61 +210,40 @@ div.info>h1>code {
     margin: 0;
 }
 
-/* PANEL EDITOR STYLES */
 div.editor-panel {
-    display: flex;
-    flex-direction: column;
-    /* height: ;
-    */
     font-family: 'Montserrat';
-    width: 50%;
+    width: 100%;
 }
 
 div.editor-panel>div.controls {
     display: flex;
-    justify-content: center;
-    gap: 3px;
-    padding: 8px 3px;
-    background-color: var(--editor-conf-bg);
+    gap: 10px;
+    width: 200px;
+    margin-bottom: 20px;
 }
 
 div.editor-panel>div.controls>div {
     text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    width: auto;
-    padding: 4px 10px;
+    font-size: 14px;
+    padding: 10px 50px; 
     cursor: pointer;
     flex: 1;
-    color: var(--editor-conf-txt);
+    color: #f0f0f0;
+    border-radius: 2px;
     background-color: var(--editor-conf-opt);
-    box-shadow: 1px 1px 2px 0px #252525;
-    transition: all 100ms;
-}
-
-div.editor-panel>div.controls>div:hover {
-    background-color: var(--editor-conf-opt-hover);
-    box-shadow: none;
-    transition: all 100ms;
 }
 
 div.editor-panel>div.editor {
-    background-color: var(--editor-bg-color);
+    background-color: #101010;
     color: var(--editor-default-text-color);
-    flex: 1;
     overflow-y: scroll;
     padding: 10px 0;
-    font-family: 'Jet Brains Mono';
-    font-size: 15px;
-}
-
-div.editor-panel>div.editor:focus {
-    outline: none;
-    border: none;
+    font-size: 14px;
 }
 
 div.editor-panel>div.editor>div {
-    padding-left: 30px;
+    padding-left: 20px;
+    padding-right: 500px;
 }
 
 div.editor-panel>div.editor>div::before {
@@ -312,9 +269,7 @@ div.editor-panel>div.editor>div.active::after {
 }
 
 div.editor-panel>div.editor>div:focus {
-    outline: 0;
-    border: 0;
-    background-color: var(--editor-bg-color-focused);
+    background-color: #333333;
 }
 
 input#speed {
