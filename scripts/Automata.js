@@ -7,17 +7,17 @@ class Automata {
                     ["VAR", "C1"],
                     ["VAR1", "C1"],
                     ["VAR2", "C1"],
-
                     ["I", "I1"],
                     ["W", "W1"],
                     ["FO", "F1"],
                     ["F", "FUN1"],
                 ],
-                reg: null, 
-                treat_as_word: true, 
+                reg: null,
+                treat_as_word: true,
             },
+            //--------------------------VARIABLES----------------------
             VAR: {
-                next: [], 
+                next: [],
                 reg: /^string$/,
                 treat_as_word: true
             },
@@ -31,6 +31,7 @@ class Automata {
                 reg: /^float$/,
                 treat_as_word: true
             },
+
             C1: {
                 next: [
                     ["L", "C3"]
@@ -140,13 +141,381 @@ class Automata {
                 reg: /^.$/,
                 treat_as_word: false
             },
-
             PYC: {
                 next: [],
                 reg: /^;$/,
                 treat_as_word: true,
                 last_transition: true
-            }
+            },
+            //--------------------------VARIABLES----------------------
+
+            //--------------------------IF-------------------------------
+            I1: {
+                next: [
+                    ["PAR1", "I2"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I2: {
+                next: [
+                    ["L", "I4"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I4: {
+                next: [
+                    ["COND", "I5"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I5: {
+                next: [
+                    ["D", "I6"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I6: {
+                next: [
+                    ["PAR2", "I7"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I7: {
+                next: [
+                    ["CORA", "I8"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I8: {
+                next: [
+                    ["CORC", "I9"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I9: {
+                next: [
+                    ["EL", "I10"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I10: {
+                next: [
+                    ["CORA", "I11"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            I11: {
+                next: [
+                    ["CORC"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+
+            I: {
+                next: [],
+                reg: /^if$/,
+                treat_as_word: true
+            },
+            PAR1: {
+                next: [],
+                reg: /^\($/,
+                treat_as_word: true
+            },
+            PAR2: {
+                next: [],
+                reg: /^\)$/,
+                treat_as_word: true
+            },
+            COND: {
+                next: [],
+                reg: /^(>|<|==|!=)$/,
+                treat_as_word: true
+            },
+            CORA: {
+                next: [],
+                reg: /^{$/,
+                treat_as_word: true
+            },
+            CORC: {
+                next: [],
+                reg: /^}$/,
+                treat_as_word: true
+            },
+            EL: {
+                next: [],
+                reg: /^else$/,
+                treat_as_word: true
+            },
+            //--------------------------IF-------------------------------
+
+            //---------------------------WHILE-----------------------------
+            W: {
+                next: [],
+                reg: /^while$/,
+                treat_as_word: true
+            },
+            W1: {
+                next: [
+                    ["PARA1", "W2"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W2: {
+                next: [
+                    ["L", "W4"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W4: {
+                next: [
+                    ["COND", "W5"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W5: {
+                next: [
+                    ["D", "W7"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W7: {
+                next: [
+                    ["PAR2", "W8"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W8: {
+                next: [
+                    ["CORA", "W9"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            W9: {
+                next: [
+                    ["CORC"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+
+            //---------------------------FOR-----------------------------
+            FO: {
+                next: [],
+                reg: /^for$/,
+                treat_as_word: true
+            },
+            F1: {
+                next: [
+                    ["PARA1", "F2"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F2: {
+                next: [
+                    ["L", "F4"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F4: {
+                next: [
+                    ["IG", "F5"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F5: {
+                next: [
+                    ["D", "F7"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F7: {
+                next: [
+                    ["PYC", "F8"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F8: {
+                next: [
+                    ["L", "F10"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F10: {
+                next: [
+                    ["COND", "F11"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F11: {
+                next: [
+                    ["L", "F13"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F13: {
+                next: [
+                    ["MAS", "F14"],
+                    ["MEN", "F14"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F14: {
+                next: [
+                    ["PAR2", "F15"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F15: {
+                next: [
+                    ["CORA", "F15"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            F15: {
+                next: [
+                    ["CORC"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            //---------------------------FOR----------------------------- 
+
+            //---------------------------FUNCTION----------------------------- 
+            F: {
+                next: [],
+                reg: /^function$/,
+                treat_as_word: true
+            },
+            FUN1: {
+                next: [
+                    ["L", "FUN2"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN3: {
+                next: [
+                    ["PAR1", "FUN4"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN4: {
+                next: [
+                    ["L", "FUN6"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN6: {
+                next: [
+                    ["VAR", "FUN7"],
+                    ["VAR1", "FUN7"],
+                    ["VAR2", "FUN7"],                
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN7: {
+                next: [
+                    ["CS", "FUN8"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN8: {
+                next: [
+                    ["L", "FUN10"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN10: {
+                next: [
+                    ["VAR", "FUN11"],
+                    ["VAR1", "FUN11"],
+                    ["VAR2", "FUN11"],  
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN11: {
+                next: [
+                    ["PAR2", "FUN12"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN12: {
+                next: [
+                    ["DP", "FUN13"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN13: {
+                next: [
+                    ["VAR", "FUN14"],
+                    ["VAR1", "FUN14"],
+                    ["VAR2", "FUN14"],  
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN14: {
+                next: [
+                    ["CORA", "FUN15"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN15: {
+                next: [
+                    ["CORA"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+
+            CS: {
+                next: [],
+                reg: /^,$/,
+                treat_as_word: true
+            },
+            DP: {
+                next: [],
+                reg: /^:$/,
+                treat_as_word: true
+            },
+            //---------------------------FUNCTION-----------------------------
+            
         },
 
     }
@@ -182,7 +551,7 @@ class Automata {
     async load_gramar() {
         await fetch('scripts/gramar.json').then(response => response.json())
             .then(data => {
-                this.grammar = data 
+                this.grammar = data
             })
             .catch(error => {
                 console.error('Error al obtener el archivo JSON:', error);
@@ -201,10 +570,10 @@ class Automata {
                 this.code_as_array[line_number]
                     .replace(/\s+/g, ' ')
                     .replace(/(:|{|}|,|\(|\)|;|>|<|==|!=|\+\+|--|")/g, ' $1 ') // Los símbolos como :, =, ", etc. les añade espacio al final y al frente,Ejemplo -> num: algo: "alga" => num : algo " alga "
-                    .replace(/\s+/g, ' ') 
-                    .trim() 
-                    .split(" ") 
-                    .filter((token) => token !== "") 
+                    .replace(/\s+/g, ' ')
+                    .trim()
+                    .split(" ")
+                    .filter((token) => token !== "")
             )
         }
 
@@ -416,7 +785,7 @@ class Automata {
      * @param {Array<string>} registers 
      */
     __validate_first_transition(registers, structure, token) {
-        const currentTransition = { ...structure[registers[0]] }; 
+        const currentTransition = { ...structure[registers[0]] };
         if (!currentTransition.reg) {
             console.warn(`Esta estructura no contiene una expresión que evaluar.\nOmitiendo por ahora.\nTransición: ${registers[0]}`);
             return false;
