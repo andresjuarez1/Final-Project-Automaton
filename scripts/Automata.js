@@ -6,7 +6,7 @@ class Automata {
                 next: [
                     ["VAR", "C1"],
                     ["VAR1", "C1"],
-                    ["VAR2", "C2"],
+                    ["VAR2", "C1"],
                 ],
                 reg: null, // Define la regla que debe aplicarse en esta transición, nulo si no es una transicion final y hace referencia otras transiciones.
                 treat_as_word: true, // Define si el token debe ser evaluado como palabra, o iterado letra por letra.
@@ -28,81 +28,96 @@ class Automata {
             },
             C1: {
                 next: [
-                    ["PA", "C"]
+                    ["L", "C3"]
                 ],
                 reg: null,
                 treat_as_word: true
             },
-            C1: {
+            C3: {
                 next: [
-                    ["PA", "C1"]
+                    ["IG", "C4"],
+                    ["C13"]
                 ],
                 reg: null,
                 treat_as_word: true
             },
-            B2: {
+            C13: {
                 next: [
-                    ["PA", "C2"]
+                    ["PYC"]
                 ],
                 reg: null,
                 treat_as_word: true
             },
-            PA: {
+            C4: {
                 next: [
-                    ["L", "PA"],
-                    [null] // null == Epsilón, se usa nulo por comodidas y para facilitar validaciones.
+                    ["D", "C5"],
+                    ["C", "C9"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C5: {
+                next: [
+                    ["D", "C6"],
+                    ["D", "C13"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C6: {
+                next: [
+                    ["P", "C7"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C7: {
+                next: [
+                    ["D", "C8"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C8: {
+                next: [
+                    ["C13"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C9: {
+                next: [
+                    ["L", "C12"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            C12: {
+                next: [
+                    ["C", "C13"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            RL: {
+                next: [
+                    ["L", "RL"],
+                    [null]
                 ],
                 reg: null,
                 treat_as_word: false
-            },
- 
-            C2: {
-                next: [
-                    ["DP", "D2"]
-                ]
             },
             L: {
                 next: [],
                 reg: /^[a-zA-Z]$/,
                 treat_as_word: false
             },
-            D1: {
+            RD: {
                 next: [
-                    ["NU", "PC"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
-            D2: {
-                next: [
-                    ["E2", "PC"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
-            C: {
-                next: [
-                    ["DP", "E"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
-            NU: {
-                next: [
-                    ["D", "NU"],
+                    ["D", "RD"],
                     [null]
                 ],
                 reg: null,
-                treat_as_word: true
-            },
-            E2: {
-                next: [],
-                reg: /^(true|false)$/,
-                treat_as_word: true
-            },
-            DP: {
-                next: [],
-                reg: /^:$/,
                 treat_as_word: true
             },
             D: {
@@ -110,33 +125,34 @@ class Automata {
                 reg: /^[0-9]$/,
                 treat_as_word: false
             },
-            E: {
-                next: [
-                    ["F", "G"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
-            F: {
+            IG: {
                 next: [],
-                reg: /^"$/,
-                treat_as_word: true
+                reg: /^=$/,
+                treat_as_word: false
             },
-            G: {
-                next: [
-                    ["PA", "H"]
-                ],
-                reg: null,
-                treat_as_word: true
+            P: {
+                next: [],
+                reg: /^.$/,
+                treat_as_word: false
             },
-            H: {
-                next: [
-                    ["F", "PC"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
-            PC: {
+
+            // E2: {
+            //     next: [],
+            //     reg: /^(true|false)$/,
+            //     treat_as_word: true
+            // },
+            // DP: {
+            //     next: [],
+            //     reg: /^:$/,
+            //     treat_as_word: true
+            // },
+            // F: {
+            //     next: [],
+            //     reg: /^"$/,
+            //     treat_as_word: true
+            // },
+
+            PYC: {
                 next: [],
                 reg: /^;$/,
                 treat_as_word: true,
@@ -228,7 +244,7 @@ class Automata {
             }
             this.tokens.shift()
         }
-        if(this.scope.length > 0){
+        if (this.scope.length > 0) {
             throw new Error("Missing } characters.")
         }
         if (this.current_rule.length) {
@@ -237,17 +253,14 @@ class Automata {
         this.__add_output_stack('success', "Código correcto!")
     }
 
-    /**
-     * Hace pausas definida en propiedad delay_between_iteration
-     */
     __wait() {
         return new Promise(resolve => setTimeout(resolve, this.delay_between_iteration))
     }
 
     async __analize_token(token) {
 
-        if(token === '}'){
-            if(this.scope.length < 1){
+        if (token === '}') {
+            if (this.scope.length < 1) {
                 throw new Error("Character } unexpected")
             }
 
@@ -299,7 +312,7 @@ class Automata {
                 this.current_structure_key = null
                 this.current_state = null
                 this.current_rule = []
-                if(first_rule_under_review.scopable){
+                if (first_rule_under_review.scopable) {
                     this.scope.push("a")
                 }
                 await this.load_gramar()

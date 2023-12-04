@@ -4,15 +4,15 @@
             "next": [
                 [
                     "VAR",
-                    "C3"
+                    "C1"
                 ],
                 [
                     "VAR1",
-                    "C3"
+                    "C1"
                 ],
                 [
                     "VAR2",
-                    "C3"
+                    "C1"
                 ]
             ],
             "reg": null,
@@ -30,7 +30,17 @@
         },
         "VAR2": {
             "next": [],
-            "reg": "^float $",
+            "reg": "^float$",
+            "treat_as_word": true
+        },
+        "C1": {
+            "next": [
+                [
+                    "L",
+                    "C3"
+                ]
+            ],
+            "reg": null,
             "treat_as_word": true
         },
         "C3": {
@@ -116,16 +126,6 @@
             "next": [
                 [
                     "L",
-                    "C10"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "C10": {
-            "next": [
-                [
-                    "L",
                     "C12"
                 ]
             ],
@@ -142,7 +142,6 @@
             "reg": null,
             "treat_as_word": true
         },
-
         "RL": {
             "next": [
                 [
@@ -156,13 +155,16 @@
             "reg": null,
             "treat_as_word": false
         },
-
-
-        "NU": {
+        "L": {
+            "next": [],
+            "reg": "^[a-zA-Z]$",
+            "treat_as_word": false
+        },
+        "RD": {
             "next": [
                 [
                     "D",
-                    "NU"
+                    "RD"
                 ],
                 [
                     null
@@ -170,11 +172,10 @@
             ],
             "reg": null,
             "treat_as_word": true
-        }, 
-
-        "L": {
+        },
+        "D": {
             "next": [],
-            "reg": "^[a-zA-Z]$",
+            "reg": "^[0-9]$",
             "treat_as_word": false
         },
         "IG": {
@@ -185,11 +186,6 @@
         "P": {
             "next": [],
             "reg": "^.$",
-            "treat_as_word": false
-        },
-        "D": {
-            "next": [],
-            "reg": "^[0-9]$",
             "treat_as_word": false
         },
         "PYC": {
