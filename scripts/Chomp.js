@@ -100,20 +100,6 @@ class Chomp {
                 { reg: /^\)$/, next: "FUN9", msg: "coincide con el carácter '('", wanted: '(' }
             ],
 
-            // R: [
-            //     { reg: /^\)$/, next: "S", msg: "coincide con el carácter ')'", wanted: ')' },
-            //     { reg: /^,$/, next: "P", msg: "coincide con el carácter ','", wanted: ',' }
-            // ],
-            // S: [
-            //     { reg: /^:$/, next: "T", msg: "coincide con el carácter ':'" }
-            // ],
-            // T: [
-            //     { reg: /^string$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
-            //     { reg: /^num$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
-            //     { reg: /^float$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
-            //     { reg: /^void$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " }
-            // ],
-
             FUN9: [
                 { reg: /^{$/, next: "FUN10", msg: "coincide con el carácter '{'", wanted: '{' },
             ],
@@ -138,7 +124,6 @@ class Chomp {
                 { reg: /^\=\=$/, next: "I2" },
                 { reg: /^\>\=$/, next: "I2" },
                 { reg: /^\=\<$/, next: "I2" },
-                // { reg: /^!\=$/, next: "ZA" },
             ],
             I3: [
                 { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "I4", msg: "coincide en uno o más dígitos numéricos" },
@@ -289,7 +274,6 @@ class Chomp {
     }
 
     verify_token(token, line) {
-        // Si ya acabó la estructura actual, o está por empezar.
         if (this.current_reference === null || this.current_structure === null) {
             if (!this.recognize_structure(token, line)) {
                 return false
@@ -335,7 +319,6 @@ class Chomp {
                     if (this.grammar[this.current_structure][first_key][rule_count].wanted) {
                         this.typo_required = this.grammar[this.current_structure][first_key][rule_count].wanted
                     }
-                    // this.current_alternative = rule_count
                     const bubble = document.createElement('li')
                     bubble.classList.add('info')
                     bubble.innerHTML = `Estructura reconocida en la línea ${line}: <strong>${this.current_structure}</strong>`
@@ -364,7 +347,6 @@ class Chomp {
         const alternatives = this.grammar[this.current_structure][this.current_reference]
         for (let option = 0; option < alternatives.length; option++) {
             if (alternatives[option].reg.test(token)) {
-                // console.log(alternatives[option].reg + "->", token)
                 let actual = this.current_reference
                 this.current_reference = alternatives[option].next
                 if (alternatives[option].wanted) {
