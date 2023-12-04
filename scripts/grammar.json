@@ -610,9 +610,19 @@
             "reg": "/^,$/",
             "treat_as_word": true
         },
-        "DP": {
+        "PAR1": {
             "next": [],
             "reg": "/^($/",
+            "treat_as_word": true
+        },
+        "PAR2": {
+            "next": [],
+            "reg": "/^)$/",
+            "treat_as_word": true
+        },
+        "DP": {
+            "next": [],
+            "reg": "/^:$/",
             "treat_as_word": true
         }
     }
