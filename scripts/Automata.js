@@ -1,39 +1,39 @@
-class Automaton {
+class Automata {
 
     grammar = {
         variable: {
             S: {
                 next: [
-                    ["A", "B"],
-                    ["A1", "B1"],
-                    ["A2", "B2"],
+                    ["VAR", "C1"],
+                    ["VAR1", "C1"],
+                    ["VAR2", "C2"],
                 ],
                 reg: null, // Define la regla que debe aplicarse en esta transición, nulo si no es una transicion final y hace referencia otras transiciones.
                 treat_as_word: true, // Define si el token debe ser evaluado como palabra, o iterado letra por letra.
             },
-            A: {
+            VAR: {
                 next: [], // Se deja vació en caso de no hacer referencia a alguna regla, NO ELIMINAR EL CAMPO, O PONER NULO
-                reg: /^str$/,
+                reg: /^string$/,
                 treat_as_word: true
             },
-            A1: {
+            VAR1: {
                 next: [],
                 reg: /^num$/,
                 treat_as_word: true
             },
-            A2: {
+            VAR2: {
                 next: [],
-                reg: /^bool$/,
+                reg: /^float$/,
                 treat_as_word: true
             },
-            B: {
+            C1: {
                 next: [
                     ["PA", "C"]
                 ],
                 reg: null,
                 treat_as_word: true
             },
-            B1: {
+            C1: {
                 next: [
                     ["PA", "C1"]
                 ],
@@ -55,13 +55,7 @@ class Automaton {
                 reg: null,
                 treat_as_word: false
             },
-            C1: {
-                next: [
-                    ["DP", "D1"]
-                ],
-                reg: null,
-                treat_as_word: true
-            },
+ 
             C2: {
                 next: [
                     ["DP", "D2"]
