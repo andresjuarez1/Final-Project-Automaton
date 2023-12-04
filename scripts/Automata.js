@@ -7,6 +7,11 @@ class Automata {
                     ["VAR", "C1"],
                     ["VAR1", "C1"],
                     ["VAR2", "C1"],
+
+                    ["I", "I1"],
+                    ["W", "W1"],
+                    ["FO", "F1"],
+                    ["F", "FUN1"],
                 ],
                 reg: null, 
                 treat_as_word: true, 
@@ -421,7 +426,7 @@ class Automata {
             return { ...currentTransition };
         }
     }
-    
+
     __add_output_stack(className, message) {
         const element_to_add = document.createElement('li')
         element_to_add.classList.add(className)
