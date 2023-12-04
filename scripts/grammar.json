@@ -7,28 +7,12 @@
                     "C1"
                 ],
                 [
-                    "VAR1",
-                    "C1"
-                ],
-                [
                     "VAR2",
                     "C1"
                 ],
                 [
-                    "I",
-                    "I1"
-                ],
-                [
-                    "W",
-                    "W1"
-                ],
-                [
-                    "FO",
-                    "F1"
-                ],
-                [
-                    "F",
-                    "FUN1"
+                    "VAR3",
+                    "C1"
                 ]
             ],
             "reg": null,
@@ -39,12 +23,12 @@
             "reg": "^string$",
             "treat_as_word": true
         },
-        "VAR1": {
+        "VAR2": {
             "next": [],
             "reg": "^num$",
             "treat_as_word": true
         },
-        "VAR2": {
+        "VAR3": {
             "next": [],
             "reg": "^float$",
             "treat_as_word": true
@@ -52,7 +36,7 @@
         "C1": {
             "next": [
                 [
-                    "RL",
+                    "PA",
                     "C3"
                 ]
             ],
@@ -62,9 +46,9 @@
         "C3": {
             "next": [
                 [
-                    "IG",
+                    "DP",
                     "C4"
-                ],
+                ], 
                 [
                     "PYC"
                 ]
@@ -72,15 +56,16 @@
             "reg": null,
             "treat_as_word": true
         },
+
         "C4": {
             "next": [
                 [
-                    "RD",
-                    "C5"
+                    "C",
+                    "C10"
                 ],
                 [
-                    "C",
-                    "C9"
+                    "NU",
+                    "C5"
                 ]
             ],
             "reg": null,
@@ -89,52 +74,28 @@
         "C5": {
             "next": [
                 [
-                    "RD",
-                    "C6"
-                ],
-                [
-                    "RD",
                     "PYC"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
-        "C6": {
-            "next": [
-                [
-                    "P",
-                    "C7"
-                ]
-            ],
-            "reg": null,
+        "C": {
+            "next": [],
+            "reg": "^\"$",
             "treat_as_word": true
         },
-        "C7": {
+        "C10": {
             "next": [
                 [
-                    "RD",
-                    "PYC"
-                ],
-                [
-                    "PYC"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        
-
-        "C9": {
-            "next": [
-                [
-                    "RL",
+                    "PA",
                     "C12"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
+        
         "C12": {
             "next": [
                 [
@@ -145,41 +106,11 @@
             "reg": null,
             "treat_as_word": true
         },
-        "CORA": {
-            "next": [],
-            "reg": "/^{$/",
-            "treat_as_word": true
-        },
-        "CORC": {
-            "next": [],
-            "reg": "/^}$/",
-            "treat_as_word": true
-        },
-        "EL": {
-            "next": [],
-            "reg": "/^else$/",
-            "treat_as_word": true
-        },
-        "PARA1": {
-            "next": [],
-            "reg": "/^($/",
-            "treat_as_word": true
-        },
-        "PARA2": {
-            "next": [],
-            "reg": "/^)$/",
-            "treat_as_word": true
-        },
-        "COND": {
-            "next": [],
-            "reg": "/^(>|<|==|!=)$/",
-            "treat_as_word": true
-        },
-        "RL": {
+        "PA": {
             "next": [
                 [
                     "L",
-                    "RL"
+                    "PA"
                 ],
                 [
                     null
@@ -187,208 +118,28 @@
             ],
             "reg": null,
             "treat_as_word": false
-        },
-        "L": {
-            "next": [],
-            "reg": "^[a-zA-Z]$",
-            "treat_as_word": false
-        },
-        "RD": {
-            "next": [
-                [
-                    "D",
-                    "RD"
-                ],
-                [
-                    null
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "D": {
-            "next": [],
-            "reg": "^[0-9]+$",
-            "treat_as_word": false
-        },
-        "IG": {
-            "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [],
-            "reg": "^.$",
-            "treat_as_word": false
-        },
-        "PYC": {
-            "next": [],
-            "reg": "^;$",
-            "treat_as_word": true,
-            "last_transition": true
-        },
-        "DP": {
-            "next": [],
-            "reg": "/^:$/",
-            "treat_as_word": true
         }, 
-        "C": {
-            "next": [],
-            "reg": "/\"$/",
-            "treat_as_word": true
-        }
-    },
-    "if": {
-        "I": {
-            "next": [],
-            "reg": "/^if$/",
-            "treat_as_word": true
-        },
-        "EL": {
-            "next": [],
-            "reg": "/^else$/",
-            "treat_as_word": true
-        },
-        "I1": {
-            "next": [
-                [
-                    "PAR1",
-                    "I2"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I2": {
-            "next": [
-                [
-                    "L",
-                    "I4"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I4": {
-            "next": [
-                [
-                    "COND",
-                    "I5"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I5": {
-            "next": [
-                [
-                    "D",
-                    "I6"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I6": {
-            "next": [
-                [
-                    "PAR2",
-                    "I7"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I7": {
-            "next": [
-                [
-                    "CORA",
-                    "I8"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I8": {
-            "next": [
-                [
-                    "CORC",
-                    "I9"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I9": {
-            "next": [
-                [
-                    "EL",
-                    "I10"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I10": {
-            "next": [
-                [
-                    "CORA",
-                    "I11"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "I11": {
-            "next": [
-                [
-                    "CORC"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "CORA": {
-            "next": [],
-            "reg": "/^{$/",
-            "treat_as_word": true
-        },
-        "CORC": {
-            "next": [],
-            "reg": "/^}$/",
-            "treat_as_word": true
-        },
-        "PARA1": {
-            "next": [],
-            "reg": "/^($/",
-            "treat_as_word": true
-        },
-        "PARA2": {
-            "next": [],
-            "reg": "/^)$/",
-            "treat_as_word": true
-        },
-        "COND": {
-            "next": [],
-            "reg": "/^(>|<|==|!=)$/",
-            "treat_as_word": true
-        },
         "L": {
             "next": [],
             "reg": "^[a-zA-Z]$",
             "treat_as_word": false
         },
-        "RD": {
+        "NU": {
             "next": [
                 [
                     "D",
-                    "RD"
+                    "NU"
                 ],
                 [
                     null
                 ]
             ],
             "reg": null,
+            "treat_as_word": false
+        },
+        "DP": {
+            "next": [],
+            "reg": "^=$",
             "treat_as_word": true
         },
         "D": {
@@ -396,387 +147,15 @@
             "reg": "^[0-9]$",
             "treat_as_word": false
         },
-        "IG": {
-            "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [],
-            "reg": "^.$",
-            "treat_as_word": false
-        },
         "PYC": {
             "next": [],
             "reg": "^;$",
             "treat_as_word": true,
             "last_transition": true
-        },
-        "DP": {
-            "next": [],
-            "reg": "^:$",
-            "treat_as_word": true,
-            "last_transition": true
         }
     },
-    "while": {
-        "W": {
-            "next": [],
-            "reg": "/^while$/",
-            "treat_as_word": true
-        },
-        "W1": {
-            "next": [
-                [
-                    "PARA1",
-                    "W2"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W2": {
-            "next": [
-                [
-                    "L",
-                    "W4"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W4": {
-            "next": [
-                [
-                    "COND",
-                    "W5"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W5": {
-            "next": [
-                [
-                    "D",
-                    "W7"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W7": {
-            "next": [
-                [
-                    "PAR2",
-                    "W8"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W8": {
-            "next": [
-                [
-                    "CORA",
-                    "W9"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "W9": {
-            "next": [
-                [
-                    "CORC"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "CS": {
-            "next": [],
-            "reg": "/^,$/",
-            "treat_as_word": true
-        },
-        "CORA": {
-            "next": [],
-            "reg": "/^{$/",
-            "treat_as_word": true
-        },
-        "CORC": {
-            "next": [],
-            "reg": "/^}$/",
-            "treat_as_word": true
-        },
-        "PARA1": {
-            "next": [],
-            "reg": "/^($/",
-            "treat_as_word": true
-        },
-        "PARA2": {
-            "next": [],
-            "reg": "/^)$/",
-            "treat_as_word": true
-        },
-        "COND": {
-            "next": [],
-            "reg": "/^(>|<|==|!=)$/",
-            "treat_as_word": true
-        },
-        "L": {
-            "next": [],
-            "reg": "^[a-zA-Z]$",
-            "treat_as_word": false
-        },
-        "RD": {
-            "next": [
-                [
-                    "D",
-                    "RD"
-                ],
-                [
-                    null
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "D": {
-            "next": [],
-            "reg": "^[0-9]$",
-            "treat_as_word": false
-        },
-        "IG": {
-            "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [],
-            "reg": "^.$",
-            "treat_as_word": false
-        },
-        "PYC": {
-            "next": [],
-            "reg": "^;$",
-            "treat_as_word": true,
-            "last_transition": true
-        },
-        "DP": {
-            "next": [],
-            "reg": "^:$",
-            "treat_as_word": true,
-            "last_transition": true
-        }
-    },
-    "for": {
-        "FO": {
-            "next": [],
-            "reg": "/^for$/",
-            "treat_as_word": true
-        },
-        "F1": {
-            "next": [
-                [
-                    "PARA1",
-                    "F2"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F2": {
-            "next": [
-                [
-                    "L",
-                    "F4"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F4": {
-            "next": [
-                [
-                    "IG",
-                    "F5"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F5": {
-            "next": [
-                [
-                    "D",
-                    "F7"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F7": {
-            "next": [
-                [
-                    "PYC",
-                    "F8"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F8": {
-            "next": [
-                [
-                    "L",
-                    "F10"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F10": {
-            "next": [
-                [
-                    "COND",
-                    "F11"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F11": {
-            "next": [
-                [
-                    "L",
-                    "F13"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F13": {
-            "next": [
-                [
-                    "MAS",
-                    "F14"
-                ],
-                [
-                    "MEN",
-                    "F14"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F14": {
-            "next": [
-                [
-                    "PAR2",
-                    "F15"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F15": {
-            "next": [
-                [
-                    "CORA",
-                    "F15"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "F16": {
-            "next": [
-                [
-                    "CORC"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "CS": {
-            "next": [],
-            "reg": "/^,$/",
-            "treat_as_word": true
-        },
-        "CORA": {
-            "next": [],
-            "reg": "/^{$/",
-            "treat_as_word": true
-        },
-        "CORC": {
-            "next": [],
-            "reg": "/^}$/",
-            "treat_as_word": true
-        },
-        "PARA1": {
-            "next": [],
-            "reg": "/^($/",
-            "treat_as_word": true
-        },
-        "PARA2": {
-            "next": [],
-            "reg": "/^)$/",
-            "treat_as_word": true
-        },
-        "COND": {
-            "next": [],
-            "reg": "/^(>|<|==|!=)$/",
-            "treat_as_word": true
-        },
-        "L": {
-            "next": [],
-            "reg": "^[a-zA-Z]$",
-            "treat_as_word": false
-        },
-        "RD": {
-            "next": [
-                [
-                    "D",
-                    "RD"
-                ],
-                [
-                    null
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "D": {
-            "next": [],
-            "reg": "^[0-9]$",
-            "treat_as_word": false
-        },
-        "IG": {
-            "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [],
-            "reg": "^.$",
-            "treat_as_word": false
-        },
-        "PYC": {
-            "next": [],
-            "reg": "^;$",
-            "treat_as_word": true,
-            "last_transition": true
-        },
-        "DP": {
-            "next": [],
-            "reg": "^:$",
-            "treat_as_word": true,
-            "last_transition": true
-        }
-    },
-    "funciones": {
-        "S":{
+    "function": {
+        "FUN": {
             "next": [
                 [
                     "F",
@@ -784,22 +163,25 @@
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
-        }, 
+            "treat_as_word": true,
+            "last_transition": false
+        },
         "F": {
             "next": [],
-            "reg": "/^function$/",
-            "treat_as_word": true
+            "reg": "^function$",
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN1": {
             "next": [
                 [
-                    "L",
-                    "FUN2"
+                    "PA",
+                    "FUN3"
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN3": {
             "next": [
@@ -809,17 +191,30 @@
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN4": {
             "next": [
                 [
-                    "L",
+                    "PA",
+                    "FUN5"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true,
+            "last_transition": false
+        },
+        "FUN5": {
+            "next": [
+                [
+                    "DP",
                     "FUN6"
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN6": {
             "next": [
@@ -828,15 +223,30 @@
                     "FUN7"
                 ],
                 [
-                    "VAR1",
+                    "VAR2",
                     "FUN7"
                 ],
                 [
-                    "VAR2",
+                    "VAR3",
                     "FUN7"
                 ]
             ],
             "reg": null,
+            "treat_as_word": true
+        },
+        "VAR": {
+            "next": [],
+            "reg": "^string$",
+            "treat_as_word": true
+        },
+        "VAR2": {
+            "next": [],
+            "reg": "^num$",
+            "treat_as_word": true
+        },
+        "VAR3": {
+            "next": [],
+            "reg": "^float$",
             "treat_as_word": true
         },
         "FUN7": {
@@ -849,15 +259,33 @@
             "reg": null,
             "treat_as_word": true
         },
+        "CS": {
+            "next": [],
+            "reg": "^,$",
+            "treat_as_word": true
+        },
+
         "FUN8": {
             "next": [
                 [
-                    "L",
+                    "PA",
+                    "FUN9"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true,
+            "last_transition": false
+        },
+        "FUN9": {
+            "next": [
+                [
+                    "DP",
                     "FUN10"
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN10": {
             "next": [
@@ -866,11 +294,11 @@
                     "FUN11"
                 ],
                 [
-                    "VAR1",
+                    "VAR2",
                     "FUN11"
                 ],
                 [
-                    "VAR2",
+                    "VAR3",
                     "FUN11"
                 ]
             ],
@@ -885,7 +313,8 @@
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN12": {
             "next": [
@@ -895,7 +324,8 @@
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN13": {
             "next": [
@@ -904,11 +334,11 @@
                     "FUN14"
                 ],
                 [
-                    "VAR1",
+                    "VAR2",
                     "FUN14"
                 ],
                 [
-                    "VAR2",
+                    "VAR3",
                     "FUN14"
                 ]
             ],
@@ -923,91 +353,391 @@
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "FUN15": {
             "next": [
                 [
-                    "CORA"
+                    "CORC"
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
-        },
-        "CS": {
-            "next": [],
-            "reg": "/^,$/",
-            "treat_as_word": true
+            "treat_as_word": true,
+            "last_transition": false
         },
         "CORA": {
             "next": [],
-            "reg": "/^{$/",
-            "treat_as_word": true
+            "reg": "^{$",
+            "treat_as_word": true,
+            "scopable": true,
+            "last_transition": true
         },
         "CORC": {
             "next": [],
-            "reg": "/^}$/",
+            "reg": "^}$",
+            "treat_as_word": true,
+            "scopable": true,
+            "last_transition": true
+        },
+        "PAR1": {
+            "next": [
+                []
+            ],
+            "reg": "^\\($",
             "treat_as_word": true
         },
-        "PARA1": {
-            "next": [],
-            "reg": "/^($/",
+        "PAR2": {
+            "next": [
+                []
+            ],
+            "reg": "^\\)$",
             "treat_as_word": true
         },
-        "PARA2": {
-            "next": [],
-            "reg": "/^)$/",
-            "treat_as_word": true
-        },
-        "COND": {
-            "next": [],
-            "reg": "/^(>|<|==|!=)$/",
-            "treat_as_word": true
-        },
-        "L": {
-            "next": [],
-            "reg": "^[a-zA-Z]$",
-            "treat_as_word": false
-        },
-        "RD": {
+        "PA": {
             "next": [
                 [
-                    "D",
-                    "RD"
+                    "L",
+                    "PA"
                 ],
                 [
                     null
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
-        },
-        "D": {
-            "next": [],
-            "reg": "^[0-9]$",
             "treat_as_word": false
         },
-        "IG": {
+        "L": {
             "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [],
-            "reg": "^.$",
+            "reg": "^[a-zA-Z]$",
             "treat_as_word": false
-        },
-        "PYC": {
-            "next": [],
-            "reg": "^;$",
-            "treat_as_word": true,
-            "last_transition": true
         },
         "DP": {
             "next": [],
             "reg": "^:$",
+            "treat_as_word": true
+        },
+        "S": {
+            "next": [
+                [
+                    "CI",
+                    "T"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        }
+    },
+    "conditional": {
+        "U": {
+            "next": [
+                [
+                    "V",
+                    "W"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "V": {
+            "next": [],
+            "reg": "^if$",
+            "treat_as_word": true
+        },
+        "W": {
+            "next": [
+                [
+                    "PA",
+                    "X"
+                ],
+                [
+                    "NU",
+                    "X"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "PA": {
+            "next": [
+                [
+                    "L",
+                    "PA"
+                ],
+                [
+                    null
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "L": {
+            "next": [],
+            "reg": "^[a-zA-Z]$",
+            "treat_as_word": false
+        },
+        "X": {
+            "next": [
+                [
+                    "OP",
+                    "Y"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "Y": {
+            "next": [
+                [
+                    "PA",
+                    "Z"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "OP": {
+            "next": [],
+            "reg": "^(>|<|==|!=)$",
+            "treat_as_word": true
+        },
+        "Z": {
+            "next": [],
+            "reg": "^{$",
             "treat_as_word": true,
-            "last_transition": true
+            "last_transition": true,
+            "scopable": true
+        }
+    },
+    "loop": {
+        "AA": {
+            "next": [
+                [
+                    "AB",
+                    "AC"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "DP": {
+            "next": [],
+            "reg": "^:$",
+            "treat_as_word": true
+        },
+        "AB": {
+            "next": [],
+            "reg": "^for$",
+            "treat_as_word": true
+        },
+        "PI": {
+            "next": [],
+            "reg": "^\\($",
+            "treat_as_word": true
+        },
+        "Q": {
+            "next": [
+                [
+                    "DP",
+                    "R"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "AC": {
+            "next": [
+                [
+                    "PI",
+                    "AD"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AD": {
+            "next": [
+                [
+                    "PA", "AE"
+                ],
+                [
+                    "NU","AH"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "PF": {
+            "next": [
+                []
+            ],
+            "reg": "^\\)$",
+            "treat_as_word": true
+        },
+        "P": {
+            "next": [
+                [
+                    "PI",
+                    "Q"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AE": {
+            "next": [
+                [
+                    "AF",
+                    "AG"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AF": {
+            "next": [],
+            "reg": "^:$",
+            "treat_as_word": true
+        },
+        "AG": {
+            "next": [
+                [
+                    "PA",
+                    "AH"
+                ],
+                [
+                    "NU",
+                    "AH"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AH": {
+            "next": [
+                [
+                    "CM",
+                    "AK"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "CM": {
+            "next": [],
+            "reg": "^,$",
+            "treat_as_word": true
+        },
+        "AK": {
+            "next": [
+                [
+                    "PA",
+                    "AL"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AL": {
+            "next": [
+                [
+                    "OP",
+                    "AM"
+                ]
+            ]
+        },
+        "AM": {
+            "next": [
+                [
+                    "PA",
+                    "AN"
+                ],
+                [
+                    "CM",
+                    "AO"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AN": {
+            "next": [
+                [
+                    "CM",
+                    "AO"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AO": {
+            "next": [
+                [
+                    "PA",
+                    "AP"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AP": {
+            "next": [
+                [
+                    "OP2",
+                    "AQ"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "OP2": {
+            "next": [],
+            "reg": "^(\\+\\+|\\-\\-)$",
+            "treat_as_word": true
+        },
+        "AQ": {
+            "next": [
+                [
+                    "PF",
+                    "AR"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "AR": {
+            "next": [
+                [
+                    "CI",
+                    "CF"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "CI": {
+            "next": [],
+            "reg": "^{$",
+            "treat_as_word": true,
+            "scopable": true
+        },
+        "PA": {
+            "next": [
+                [
+                    "L",
+                    "PA"
+                ],
+                [
+                    null
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "L": {
+            "next": [],
+            "reg": "^[a-zA-Z]$",
+            "treat_as_word": false
         }
     }
 }

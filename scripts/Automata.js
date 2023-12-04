@@ -88,6 +88,7 @@ class Automata {
         if (this.current_rule.length) {
             this.__say_error("Se esparaban más carácteres.")
         }
+        this.visual_input_stack.innerHTML='';
         this.__add_output_stack('success', "Código correcto!")
     }
 
