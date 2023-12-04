@@ -1,4 +1,8 @@
 class Automata {
+    //  function nombre (a: num, b: num):num {}
+    // if (variable == 5) {} else {}
+    
+
 
     current_rule_group_index = -1
     current_structure_key = null
