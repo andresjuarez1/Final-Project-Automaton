@@ -34,7 +34,7 @@ class Automata {
 
             C1: {
                 next: [
-                    ["L", "C3"]
+                    ["RL", "C3"]
                 ],
                 reg: null,
                 treat_as_word: true
