@@ -413,13 +413,108 @@ class Automata {
                 reg: /^function$/,
                 treat_as_word: true
             },
-            F1: {
+            FUN1: {
                 next: [
-                    ["", "F2"],
+                    ["L", "FUN2"],
                 ],
                 "reg": null,
                 "treat_as_word": true
             },
+            FUN3: {
+                next: [
+                    ["PAR1", "FUN4"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN4: {
+                next: [
+                    ["L", "FUN6"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN6: {
+                next: [
+                    ["VAR", "FUN7"],
+                    ["VAR1", "FUN7"],
+                    ["VAR2", "FUN7"],                
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN7: {
+                next: [
+                    ["CS", "FUN8"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN8: {
+                next: [
+                    ["L", "FUN10"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN10: {
+                next: [
+                    ["VAR", "FUN11"],
+                    ["VAR1", "FUN11"],
+                    ["VAR2", "FUN11"],  
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN11: {
+                next: [
+                    ["PAR2", "FUN12"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN12: {
+                next: [
+                    ["DP", "FUN13"]
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN13: {
+                next: [
+                    ["VAR", "FUN14"],
+                    ["VAR1", "FUN14"],
+                    ["VAR2", "FUN14"],  
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN14: {
+                next: [
+                    ["CORA", "FUN15"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+            FUN15: {
+                next: [
+                    ["CORA"],
+                ],
+                "reg": null,
+                "treat_as_word": true
+            },
+
+            CS: {
+                next: [],
+                reg: /^,$/,
+                treat_as_word: true
+            },
+            DP: {
+                next: [],
+                reg: /^:$/,
+                treat_as_word: true
+            },
+
             //---------------------------FUNCTION----------------------------- 
         },
 
