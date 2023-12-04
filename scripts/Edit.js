@@ -202,14 +202,14 @@ const codes = [
 ]
 
 const test_data = [
-    [
-        'num hola: 12;',
-        'num mundo: 12.12;',
-        'str como: "Some text";',
-        'bool estamos: true;'
-    ],
     // [
-    //     'num a: "Some text"  ;',
+    //     'num hola: 12;',
+    //     'num mundo: 122;',
+    //     'str como: "Sometext";',
+    //     'bool estamos: true;'
+    // ],
+    // [
+    //     'num a: "Sometext"  ;',
     //     'str b: true  ;',
     //     'bool c: 12 ;',
     //     'bool c: .12 ;'
@@ -223,17 +223,14 @@ const test_data = [
     //     '}',
     // ],
     // [
-    //     'if 1 < 1{',
-    //     '   str b: true  ;',
+    //     'if ola < alo{',
+    //     '   bool b: true  ;',
     //     '}',
     //     'if varname > namevar{',
-    //     '   str b: true  ;',
+    //     '   str b: "true"  ;',
     //     '}',
-    //     'if "varname" == "namevar"{',
-    //     '   str b: true  ;',
-    //     '}',
-    //     'if "varname" != 12{',
-    //     '   str b: true  ;',
+    //     'if varname == namevar{',
+    //     '   num b: 12  ;',
     //     '}',
     // ],
     // [
@@ -244,6 +241,10 @@ const test_data = [
     //     '   str b: true  ;',
     //     '}'
     // ],
+    [
+        "if alo < ola {",
+        "    bool a: true;",
+    ]
 ]
 
 

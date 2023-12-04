@@ -19,162 +19,223 @@ class Chomp {
     grammar = {
         variable_declaration: {
             V: [
-                { reg: /^str$/, next: "A", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'str' },
-                { reg: /^num$/, next: "A", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'num' },
-                { reg: /^bool$/, next: "A", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'bool' }
+                { reg: /^string$/, next: "C1", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'string' },
+                { reg: /^num$/, next: "C1", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'num' },
+                { reg: /^float$/, next: "C1", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'float' }
             ],
-            A: [
+            C1: [
                 {
                     reg: /^[^0-9][a-zA-Z0-9]*$/,
-                    next: "C",
+                    next: "C3",
                     msg: "coincide con caracteres alfanuméricos que no comiencen con un número."
                 }
             ],
-            C: [
-                { reg: /^:$/, next: "D", msg: "coincide con el carácter ':'" }
+            C3: [
+                { reg: /^=$/, next: "C4", msg: "coincide con el carácter '='" },
+                { reg: /;$/, next: "C13", msg: "coincide " }
             ],
-            D: [
+
+            C13: [
+                { next: null, scopable: true, msg: "variable finalizada" }
+            ],
+
+            C4: [
                 {
-                    reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "E", msg: "coincide en uno o más dígitos numéricos",
+                    reg: /^[0-9]*$/, next: "C5", msg: "coincide en uno o más dígitos numéricos",
                     given: 'num'
                 },
                 {
-                    reg: /^"$/, next: "F", msg: "coincide con el carácter '\"'",
-                    given: 'str'
+                    reg: /^"$/, next: "C6", msg: "coincide con el carácter '\"'",
+                    given: 'string'
                 },
                 {
-                    reg: /^true$/, next: "J", msg: "coincide con los tipos de datos permitido: str | num | bool ",
-                    given: 'bool'
-                },
-                {
-                    reg: /^false$/, next: "J", msg: "coincide con los tipos de datos permitido: str | num | bool ",
-                    given: 'bool'
+                    reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "C5", msg: "coincide en uno o más dígitos numéricos",
+                    given: 'float'
                 }
             ],
-            E: [
+            C5: [
                 { reg: /^;$/, next: null, msg: "coincide con el carácter ';'" }
             ],
-            F: [
-                { reg: /^[a-zA-Z0-9]*$/, next: "I", msg: "cualquier combinación de caracteres alfanuméricos" }
+            C6: [
+                { reg: /^[a-zA-Z0-9]*$/, next: "C7", msg: "cualquier combinación de caracteres alfanuméricos" }
             ],
-            I: [
-                { reg: /^"$/, next: "J", msg: "coincide con el carácter '\"'" },
-                { reg: /^[a-zA-Z0-9]*$/, next: "I", msg: "cualquier combinación de caracteres alfanuméricos" }
+            C7: [
+                { reg: /^"$/, next: "C8", msg: "coincide con el carácter '\"'" },
+                { reg: /^[a-zA-Z0-9]*$/, next: "C7", msg: "cualquier combinación de caracteres alfanuméricos" }
             ],
-            J: [
+            C8: [
                 { reg: /^;$/, next: null, msg: "coincide con el carácter ';'" }
             ]
         },
         function_declaration: {
-            K: [
-                { reg: /^fn$/, next: "L", msg: "coincide con la palabra reservada fn" }
+            FUNC: [
+                { reg: /^function$/, next: "FUN1", msg: "coincide con la palabra reservada fn" }
             ],
-            L: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "O", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." }
+            FUN1: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "FUN2", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." }
             ],
-            O: [
-                { reg: /^\($/, next: "P", msg: "coincide con el carácter '('", wanted: '(' }
+            FUN2: [
+                { reg: /^\($/, next: "FUN3", msg: "coincide con el carácter '('", wanted: '(' }
             ],
-            P: [
-                { reg: /^str$/, next: "Q", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'str' },
-                { reg: /^num$/, next: "Q", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'num' },
-                { reg: /^bool$/, next: "Q", msg: "coincide con los tipos de datos permitido: str | num | bool ", wanted: 'bool' },
-                { reg: /^\)$/, next: "S", msg: "coincide con el carácter ')'", wanted: ')' }
+            FUN3: [
+                { reg: /^string$/, next: "FUN4", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'string' },
+                { reg: /^num$/, next: "FUN4", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'num' },
+                { reg: /^float$/, next: "FUN4", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'float' },
             ],
-            Q: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "R", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." }
+            FUN4: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "FUN5", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." }
             ],
-            R: [
-                { reg: /^\)$/, next: "S", msg: "coincide con el carácter ')'", wanted: ')' },
-                { reg: /^,$/, next: "P", msg: "coincide con el carácter ','", wanted: ',' }
+            FUN5: [
+                { reg: /^,*$/, next: "FUN6", msg: "coincide con ','", wanted: ',' }
             ],
-            S: [
-                { reg: /^:$/, next: "T", msg: "coincide con el carácter ':'" }
+            FUN6: [
+                { reg: /^string$/, next: "FUN7", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'string' },
+                { reg: /^num$/, next: "FUN7", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'num' },
+                { reg: /^float$/, next: "FUN7", msg: "coincide con los tipos de datos permitido: string | num | float ", wanted: 'float' },
             ],
-            T: [
-                { reg: /^str$/, next: "U", msg: "coincide con los tipos de datos permitido: str | num | bool | void " },
-                { reg: /^num$/, next: "U", msg: "coincide con los tipos de datos permitido: str | num | bool | void " },
-                { reg: /^bool$/, next: "U", msg: "coincide con los tipos de datos permitido: str | num | bool | void " },
-                { reg: /^void$/, next: "U", msg: "coincide con los tipos de datos permitido: str | num | bool | void " }
+            FUN7: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "FUN8", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." }
             ],
-            U: [
-                { reg: /^{$/, next: null, scopable: true, msg: "coincide con el carácter '{'", wanted: '{' },
+            FUN8: [
+                { reg: /^\)$/, next: "FUN9", msg: "coincide con el carácter '('", wanted: '(' }
+            ],
+
+            // R: [
+            //     { reg: /^\)$/, next: "S", msg: "coincide con el carácter ')'", wanted: ')' },
+            //     { reg: /^,$/, next: "P", msg: "coincide con el carácter ','", wanted: ',' }
+            // ],
+            // S: [
+            //     { reg: /^:$/, next: "T", msg: "coincide con el carácter ':'" }
+            // ],
+            // T: [
+            //     { reg: /^string$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
+            //     { reg: /^num$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
+            //     { reg: /^float$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " },
+            //     { reg: /^void$/, next: "U", msg: "coincide con los tipos de datos permitido: string | num | float | void " }
+            // ],
+
+            FUN9: [
+                { reg: /^{$/, next: "FUN10", msg: "coincide con el carácter '{'", wanted: '{' },
+            ],
+            FUN10: [
+                { reg: /^}$/, next: null, scopable: true, msg: "coincide con el carácter '}'", wanted: '{' },
             ]
         },
+
         conditional_declaration: {
-            X: [
-                { reg: /^if$/, next: "Y", msg: "coincide con la palabra reservada 'if'" },
+            IFG: [
+                { reg: /^if$/, next: "I1", msg: "coincide con la palabra reservada 'if'" },
             ],
-            Y: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "Z", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
-                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "Z", msg: "coincide en uno o más dígitos numéricos" },
+            I1: [
+                { reg: /^\($/, next: "I2", msg: "coincide con el carácter '('", wanted: '(' }
             ],
-            Z: [
-                { reg: /^\>$/, next: "ZA" },
-                { reg: /^\<$/, next: "ZA" },
-                { reg: /^\=\=$/, next: "ZA" },
-                { reg: /^\>\=$/, next: "ZA" },
-                { reg: /^\<\=$/, next: "ZA" },
-                { reg: /^!\=$/, next: "ZA" },
+            I2: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "COND", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
             ],
-            ZA: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "ZB", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
-                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "ZB", msg: "coincide en uno o más dígitos numéricos" },
+            COND: [
+                { reg: /^\>$/, next: "I2" },
+                { reg: /^\<$/, next: "I2" },
+                { reg: /^\=\=$/, next: "I2" },
+                { reg: /^\>\=$/, next: "I2" },
+                { reg: /^\=\<$/, next: "I2" },
+                // { reg: /^!\=$/, next: "ZA" },
             ],
-            ZB: [
-                { reg: /^{$/, next: null, scopable: true, msg: "coincide con el carácter '{'", wanted: '{' },
+            I3: [
+                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "I4", msg: "coincide en uno o más dígitos numéricos" },
+            ],
+            I4: [
+                { reg: /^\)$/, next: "I5", msg: "coincide con el carácter ')'", wanted: ')' }
+            ],
+            I5: [
+                { reg: /^{$/, next: "I6", msg: "coincide con el carácter '{'", wanted: '{' },
+            ],
+            I6: [
+                { reg: /^else$/, next: "I7 ", msg: "coincide con la palabra reservada 'if'" },
+            ],
+            I7: [
+                { reg: /^{$/, next: "I8", msg: "coincide con el carácter '{'", wanted: '{' },
+            ],
+            I8: [
+                { reg: /^}$/, next: null, scopable: true, msg: "coincide con el carácter '}'", wanted: '{' },
             ]
         },
         for_loop: {
-            ZF: [
-                { reg: /^for$/, next: "ZG", msg: "coincide con la palabra reservada 'for'" },
+            FOR: [
+                { reg: /^for$/, next: "F1", msg: "coincide con la palabra reservada 'for'" },
             ],
-            ZG: [
-                { reg: /^\($/, next: "ZH", msg: "coincide con el carácter '('", wanted: '(' },
+            F1: [
+                { reg: /^\($/, next: "F2", msg: "coincide con el carácter '('", wanted: '(' },
             ],
-            ZH: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "ZI", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
+            F2: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "F3", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
             ],
-            ZI: [
-                { reg: /^:$/, next: "ZJ", msg: "coincide con el carácter ':'." },
-                { reg: /^,$/, next: "ZL", msg: "coincide con el carácter ','." },
+            F3: [
+                { reg: /^=$/, next: "F4", msg: "coincide con el carácter '='." },
             ],
-            ZJ: [
-                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "ZK", msg: "coincide en uno o más dígitos numéricos" },
+            F4: [
+                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "F5", msg: "coincide en uno o más dígitos numéricos" },
             ],
-            ZK: [
-                { reg: /^,$/, next: "ZL", msg: "coincide con el carácter ','." },
+            F5: [
+                { reg: /^;$/, next: "F6", msg: "coincide con el carácter ';'." },
             ],
-            ZL: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "ZM", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
+            F6: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "F7", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
             ],
-            ZM: [
-                { reg: /^\>$/, next: "ZN" },
-                { reg: /^\<$/, next: "ZN" },
-                { reg: /^\=\=$/, next: "ZN" },
-                { reg: /^\>\=$/, next: "ZN" },
-                { reg: /^\<\=$/, next: "ZN" },
-                { reg: /^!\=$/, next: "ZN" },
+            F7: [
+                { reg: /^\>$/, next: "F8" },
+                { reg: /^\<$/, next: "F8" },
+                { reg: /^\=\=$/, next: "F8" },
+                { reg: /^\>\=$/, next: "F8" },
+                { reg: /^\=\<$/, next: "F8" },
+                { reg: /^!\=$/, next: "F8" },
             ],
-            ZN: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "ZO", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
-                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "ZO", msg: "coincide en uno o más dígitos numéricos" },
+            F8: [
+                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "F9", msg: "coincide en uno o más dígitos numéricos" },
             ],
-            ZO: [
-                { reg: /^,$/, next: "ZP", msg: "coincide con el carácter ','." },
+            F9: [
+                { reg: /^--$/, next: "F10", msg: "coincide con caracteres de incremento: ++ | --." },
+                { reg: /^\+\+$/, next: "F10", msg: "coincide con caracteres de incremento: ++ | --." },
             ],
-            ZP: [
-                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "ZQ", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
+            F10: [
+                { reg: /^\)$/, next: "F11", msg: "coincide con el carácter ')'." },
             ],
-            ZQ: [
-                { reg: /^--$/, next: "ZR", msg: "coincide con caracteres de incremento: ++ | --." },
-                { reg: /^\+\+$/, next: "ZR", msg: "coincide con caracteres de incremento: ++ | --." },
+            F11: [
+                { reg: /^{$/, next: "F12", msg: "coincide con el carácter '{'", wanted: '{' },
             ],
-            ZR: [
-                { reg: /^\)$/, next: "ZS", msg: "coincide con el carácter ')'." },
+            F12: [
+                { reg: /^}$/, next: null, scopable: true, msg: "coincide con el carácter '}'", wanted: '}' },
+            ]
+        },
+
+        while_loop: {
+            WH: [
+                { reg: /^while$/, next: "W1", msg: "coincide con la palabra reservada 'while'" },
             ],
-            ZS: [
-                { reg: /^{$/, next: null, scopable: true, msg: "coincide con el carácter '{'", wanted: '{' },
+            W1: [
+                { reg: /^\($/, next: "W2", msg: "coincide con el carácter '('", wanted: '(' },
+            ],
+            W2: [
+                { reg: /^[^0-9][a-zA-Z0-9]*$/, next: "W3", msg: "coincide con caracteres alfanuméricos que no comiencen con un número." },
+            ],
+            W3: [
+                { reg: /^\>$/, next: "W4" },
+                { reg: /^\<$/, next: "W4" },
+                { reg: /^\=\=$/, next: "W4" },
+                { reg: /^\>\=$/, next: "W4" },
+                { reg: /^\=\<$/, next: "W4" },
+                { reg: /^!\=$/, next: "W4" },
+            ],
+            W4: [
+                { reg: /^(?!.*\.\.)(?!^\.)\d+(\.\d+)?$/, next: "W5", msg: "coincide en uno o más dígitos numéricos" },
+            ],
+            W5: [
+                { reg: /^\)$/, next: "W6", msg: "coincide con el carácter ')'." },
+            ],
+            W6: [
+                { reg: /^{$/, next: "W7", msg: "coincide con el carácter '{'", wanted: '{' },
+            ],
+            W7: [
+                { reg: /^}$/, next: null, scopable: true, msg: "coincide con el carácter '}'", wanted: '}' },
             ]
         }
     }
@@ -210,7 +271,7 @@ class Chomp {
                 return
             }
         }
-        
+
         const bubble = document.createElement('li')
         if (this.scope.length > 1) {
             bubble.classList.add('error')

@@ -3,40 +3,40 @@
         "S": {
             "next": [
                 [
-                    "A",
-                    "B"
+                    "VAR",
+                    "C1" 
                 ],
                 [
-                    "A1",
+                    "VAR1",
                     "B1"
                 ],
                 [
-                    "A2",
+                    "VAR2",
                     "B2"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
-        "A": {
+        "VAR": {
             "next": [],
-            "reg": "^str$",
+            "reg": "^string$",
             "treat_as_word": true
         },
-        "A1": {
+        "VAR1": {
             "next": [],
             "reg": "^num$",
             "treat_as_word": true
         },
-        "A2": {
+        "VAR2": {
             "next": [],
-            "reg": "^bool$",
+            "reg": "^float $",
             "treat_as_word": true
         },
-        "B": {
+        "C3": {
             "next": [
                 [
-                    "PA",
+                    "NV",
                     "C"
                 ]
             ],
@@ -46,7 +46,7 @@
         "B1": {
             "next": [
                 [
-                    "PA",
+                    "NV",
                     "C1"
                 ]
             ],
@@ -56,18 +56,18 @@
         "B2": {
             "next": [
                 [
-                    "PA",
+                    "NV",
                     "C2"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
-        "PA": {
+        "NV": {
             "next": [
                 [
                     "L",
-                    "PA"
+                    "NV"
                 ],
                 [
                     null
@@ -79,7 +79,7 @@
         "C1": {
             "next": [
                 [
-                    "DP",
+                    "IG",
                     "D1"
                 ]
             ],
@@ -89,7 +89,7 @@
         "C2": {
             "next": [
                 [
-                    "DP",
+                    "IG",
                     "D2"
                 ]
             ],
@@ -124,7 +124,7 @@
         "C": {
             "next": [
                 [
-                    "DP",
+                    "IG",
                     "E"
                 ]
             ],
@@ -149,7 +149,7 @@
             "reg": "^(true|false)$",
             "treat_as_word": true
         },
-        "DP": {
+        "IG": {
             "next": [],
             "reg": "^:$",
             "treat_as_word": true
@@ -177,7 +177,7 @@
         "G": {
             "next": [
                 [
-                    "PA",
+                    "NV",
                     "H"
                 ]
             ],
