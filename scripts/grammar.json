@@ -730,5 +730,186 @@
             "reg": "^[a-zA-Z]$",
             "treat_as_word": false
         }
+    },
+    "for": {
+        "FOO": {
+            "next": [
+                [
+                    "FO",
+                    "F1"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "FO": {
+            "next": [],
+            "reg": "^for$",
+            "treat_as_word": true
+        },
+        "F1": {
+            "next": [
+                [
+                    "PAR1",
+                    "F2"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "F2": {
+            "next": [
+                [
+                    "PA",
+                    "F4"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F4": {
+            "next": [
+                [
+                    "OP",
+                    "F5"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F5": {
+            "next": [
+                [
+                    "NU",
+                    "F6"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F6": {
+            "next": [
+                [
+                    "PA",
+                    "F7"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F7": {
+            "next": [
+                [
+                    "MAME",
+                    "F8"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F8": {
+            "next": [
+                [
+                    "PAR2",
+                    "F9"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F9": {
+            "next": [
+                [
+                    "CORA",
+                    "F10"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "F10": {
+            "next": [
+                [
+                    "CORC"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "MAME": {
+            "next": [],
+            "reg": "^(\\+\\+|\\-\\-)$",
+            "treat_as_word": true
+        },
+        "IG": {
+            "next": [],
+            "reg": "^=$",
+            "treat_as_word": true
+        },
+        "PAR1": {
+            "next": [],
+            "reg": "^\\($",
+            "treat_as_word": true
+        },
+        "PAR2": {
+            "next": [],
+            "reg": "^\\)$",
+            "treat_as_word": true
+        },
+        "OP": {
+            "next": [],
+            "reg": "^(>|<|==|!=)$",
+            "treat_as_word": true
+        },
+        "NU": {
+            "next": [
+                [
+                    "D",
+                    "NU"
+                ],
+                [
+                    null
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "D": {
+            "next": [],
+            "reg": "^[0-9]$",
+            "treat_as_word": false
+        },
+        "CORA": {
+            "next": [],
+            "reg": "^{$",
+            "treat_as_word": true,
+            "scopable": true,
+            "last_transition": true
+        },
+        "CORC": {
+            "next": [],
+            "reg": "^}$",
+            "treat_as_word": true,
+            "scopable": true,
+            "last_transition": true
+        },
+        "PA": {
+            "next": [
+                [
+                    "L",
+                    "PA"
+                ],
+                [
+                    null
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": false
+        },
+        "L": {
+            "next": [],
+            "reg": "^[a-zA-Z]$",
+            "treat_as_word": false
+        }
     }
 }
