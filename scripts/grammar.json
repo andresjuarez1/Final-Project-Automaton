@@ -135,15 +135,15 @@
             "reg": null,
             "treat_as_word": false
         },
-        "DP": {
-            "next": [],
-            "reg": "^=$",
-            "treat_as_word": true
-        },
         "D": {
             "next": [],
             "reg": "^[0-9]$",
             "treat_as_word": false
+        },
+        "DP": {
+            "next": [],
+            "reg": "^=$",
+            "treat_as_word": true
         },
         "PYC": {
             "next": [],
@@ -580,219 +580,137 @@
             "last_transition": true
         }
     },
-    "loop": {
-        "AA": {
+    "while": {
+        "WH": {
             "next": [
                 [
-                    "AB",
-                    "AC"
+                    "W",
+                    "W1"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
-        "DP": {
+        "W": {
             "next": [],
-            "reg": "^:$",
+            "reg": "^while$",
             "treat_as_word": true
         },
-        "AB": {
-            "next": [],
-            "reg": "^for$",
-            "treat_as_word": true
-        },
-        "PI": {
+        "PAR1": {
             "next": [],
             "reg": "^\\($",
             "treat_as_word": true
         },
-        "Q": {
+        "PAR2": {
+            "next": [],
+            "reg": "^\\)$",
+            "treat_as_word": true
+        },
+        "W1": {
             "next": [
                 [
-                    "DP",
-                    "R"
+                    "PAR1",
+                    "W2"
                 ]
             ],
             "reg": null,
             "treat_as_word": false
         },
-        "AC": {
-            "next": [
-                [
-                    "PI",
-                    "AD"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AD": {
+        "W2": {
             "next": [
                 [
                     "PA",
-                    "AE"
-                ],
-                [
-                    "NU",
-                    "AH"
+                    "W4"
                 ]
             ],
             "reg": null,
             "treat_as_word": true
         },
-        "PF": {
-            "next": [
-                []
-            ],
-            "reg": "^\\)$",
-            "treat_as_word": true
-        },
-        "P": {
-            "next": [
-                [
-                    "PI",
-                    "Q"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AE": {
-            "next": [
-                [
-                    "AF",
-                    "AG"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AF": {
-            "next": [],
-            "reg": "^:$",
-            "treat_as_word": true
-        },
-        "AG": {
-            "next": [
-                [
-                    "PA",
-                    "AH"
-                ],
-                [
-                    "NU",
-                    "AH"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AH": {
-            "next": [
-                [
-                    "CM",
-                    "AK"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "CM": {
-            "next": [],
-            "reg": "^,$",
-            "treat_as_word": true
-        },
-        "AK": {
-            "next": [
-                [
-                    "PA",
-                    "AL"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AL": {
+        "W4": {
             "next": [
                 [
                     "OP",
-                    "AM"
+                    "W5"
                 ]
-            ]
+            ],
+            "reg": null,
+            "treat_as_word": true
         },
-        "AM": {
+        "OP": {
+            "next": [],
+            "reg": "^(>|<|==|!=)$",
+            "treat_as_word": true
+        },
+        "W5": {
             "next": [
                 [
-                    "PA",
-                    "AN"
+                    "NU",
+                    "W7"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "W7": {
+            "next": [
+                [
+                    "PAR2",
+                    "W8"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "W8": {
+            "next": [
+                [
+                    "CORA",
+                    "W9"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "W9": {
+            "next": [
+                [
+                    "CORC"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "NU": {
+            "next": [
+                [
+                    "D",
+                    "NU"
                 ],
                 [
-                    "CM",
-                    "AO"
+                    null
                 ]
             ],
             "reg": null,
-            "treat_as_word": true
+            "treat_as_word": false
         },
-        "AN": {
-            "next": [
-                [
-                    "CM",
-                    "AO"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AO": {
-            "next": [
-                [
-                    "PA",
-                    "AP"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AP": {
-            "next": [
-                [
-                    "OP2",
-                    "AQ"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "OP2": {
+        "D": {
             "next": [],
-            "reg": "^(\\+\\+|\\-\\-)$",
-            "treat_as_word": true
+            "reg": "^[0-9]$",
+            "treat_as_word": false
         },
-        "AQ": {
-            "next": [
-                [
-                    "PF",
-                    "AR"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "AR": {
-            "next": [
-                [
-                    "CI",
-                    "CF"
-                ]
-            ],
-            "reg": null,
-            "treat_as_word": true
-        },
-        "CI": {
+        "CORA": {
             "next": [],
             "reg": "^{$",
             "treat_as_word": true,
-            "scopable": true
+            "scopable": true,
+            "last_transition": true
+        },
+        "CORC": {
+            "next": [],
+            "reg": "^}$",
+            "treat_as_word": true,
+            "scopable": true,
+            "last_transition": true
         },
         "PA": {
             "next": [
