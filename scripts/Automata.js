@@ -93,7 +93,7 @@ class Automata {
             this.__say_error("Se esparaban más carácteres.")
         }
         this.visual_input_stack.innerHTML='';
-        this.__add_output_stack('success', "Código correcto!")
+        this.__add_output_stack('success', "TODO BIEN!")
     }
 
     /**
@@ -269,7 +269,7 @@ class Automata {
                         this.current_rule_group_index = 0;
                         this.current_state = initial_state;
 
-                        this.__add_output_stack('info', 'Nueva estructura localizada: ' + this.current_structure_key);
+                        this.__add_output_stack('info', 'estructura localizada: ' + this.current_structure_key);
                         this.__add_output_stack('reg', `Inicial: ${this.current_state} => ${this.current_rule.map((item) => { return item })}`);
                     }
                 }

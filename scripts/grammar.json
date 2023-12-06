@@ -4,7 +4,7 @@
             "next": [
                 [
                     "VAR",
-                    "C1"
+                    "C1-1"
                 ],
                 [
                     "VAR2",
@@ -43,6 +43,16 @@
             "reg": null,
             "treat_as_word": true
         },
+        "C1-1": {
+            "next": [
+                [
+                    "PA",
+                    "C3-3"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
         "C3": {
             "next": [
                 [
@@ -56,15 +66,34 @@
             "reg": null,
             "treat_as_word": true
         },
+        "C3-3": {
+            "next": [
+                [
+                    "DP",
+                    "C4-4"
+                ],
+                [
+                    "PYC"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
         "C4": {
+            "next": [
+                [
+                    "NU",
+                    "C5"
+                ]
+            ],
+            "reg": null,
+            "treat_as_word": true
+        },
+        "C4-4": {
             "next": [
                 [
                     "C",
                     "C10"
-                ],
-                [
-                    "NU",
-                    "C5"
                 ]
             ],
             "reg": null,
