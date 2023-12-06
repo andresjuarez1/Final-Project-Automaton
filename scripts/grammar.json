@@ -591,8 +591,19 @@
         },
         "OP": {
             "next": [],
-            "reg": "^(>|<|==|!=)$",
+            "reg": "^(>|<|==|!)$",
             "treat_as_word": true
+        },
+        "COR1": {
+            "next": [],
+            "reg": "^{$",
+            "treat_as_word": true
+        },
+        "COR2": {
+            "next": [],
+            "reg": "^}$",
+            "treat_as_word": true,
+            "last_transition": true
         },
         "CORA": {
             "next": [],
